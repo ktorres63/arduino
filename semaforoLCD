@@ -1,0 +1,52 @@
+#include <LiquidCrystal.h>
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup(){
+  lcd.begin(16, 2);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+
+}
+
+void loop(){
+  
+  for(int i = 10; i > 0;i--){
+   	
+  	lcd.setCursor(6, 0);
+    lcd.print("pare");
+    lcd.setCursor(7, 1);  
+  	lcd.print(i);
+    digitalWrite(8,HIGH);
+    time();
+  }
+  digitalWrite(8,LOW);
+  
+  for(int i = 5; i > 0;i--){
+  
+  	lcd.setCursor(6, 0);
+    lcd.print("----");
+    digitalWrite(7,HIGH);
+    lcd.setCursor(7, 1);  
+  	lcd.print(i);
+    time();
+    
+  }
+  digitalWrite(7,LOW);
+  for(int i = 10; i > 0;i--){
+  	lcd.setCursor(6, 0);
+    lcd.print("pase");
+    digitalWrite(6,HIGH);
+    lcd.setCursor(7, 1);  
+  	lcd.print(i);
+    time();
+    
+  }
+   digitalWrite(6,LOW);
+}
+
+void time(){
+  delay(1000); 
+  lcd.clear();
+}
